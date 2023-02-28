@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'lib-general-components',
   template: `
     <p>
-      general-components works!
+      A very awesome general component
     </p>
   `,
   styles: [
