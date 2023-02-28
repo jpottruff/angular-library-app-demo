@@ -9,8 +9,13 @@
     "noImplicitOverride": true,
     // This points to the **compiled** version of the library
     "paths": {
+      // Fixes error indicates that somehow there are two copies of Ivy in there. 
+      // This was due to TypeScript's module resolution approach - it looks for node_modules by traversing up the directory of file being compiled.
+      // https://github.com/angular/angular/issues/35586#issuecomment-630774572
+      "@angular/*": [
+        "./node_modules/@angular/*"
+      ],
       // `general-components` is the **alias** we can use to import the library
-      // ! NOTE: this will not work yet...
       "general-components": [
         "../workspace-a/dist/general-components"
       ]
