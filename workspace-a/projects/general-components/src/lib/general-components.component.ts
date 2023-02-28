@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
     <p>
       A very awesome general component - that will have live reloading if i use the 
-      <code style="background-color: #D3D3D3">--watch</code> 
+      <code style="background-color: goldenrod">--watch</code> 
       flag
     </p>
   `,
