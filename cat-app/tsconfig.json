@@ -17,7 +17,8 @@
       ],
       // `general-components` is the **alias** we can use to import the library
       "general-components": [
-        "../workspace-a/dist/general-components"
+        // "../workspace-a/dist/general-components"
+        "./node_modules/general-components"
       ]
     },
     "noPropertyAccessFromIndexSignature": true,
