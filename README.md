@@ -52,8 +52,73 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
             ]
         },
         ```
+## Publishing artifacats (locally w/ Verdaccio)
 
-## Resources
+### Publish
+_Assuming Verdaccio is running and you have created a user_
+
+```bash
+# Build your library
+ng build <lib-name>
+
+# Change into the output folder
+cd dist/<lib-name>
+
+# Publish to Verdaccio (will make .tgz and publish)
+npm publish --registry http://localhost:4873/
+```
+### Install
+1. Ensure you have an `.npmrc` with the location of the Verdaccio repository
+   
+    ```
+    registry=http://localhost:4873/
+    ```
+
+1. You can go to the Verdacio server and find the package and copy the command to install it
+    
+    `npm install <lib-name>`
+
+### Other Useful Commands
+```bash
+# Add a user
+npm adduser --registry http://localhost:4873/
+
+# Check if you are logged in
+npm whoami --registry http://localhost:4873/
+
+# Publish (run from library output folder)
+npm publish --registry http://localhost:4873/
+```
+## Takeaways
+- Verdaccio is an NPM proxy - if the package does not exist on Verdaccion, it will reach out to the official NPM repo
+
+
+
+## General Resources
 [Angular Libraries Playlist](https://www.youtube.com/playlist?list=PLhzRPVQgdM8Vlty5X7d7cDTuW6QcCMaB8) from [Code Shots With Profanis](https://www.youtube.com/@CodeShotsWithProfanis/featured) 
 
-[Github Issue](https://github.com/angular/angular/issues/35586#issuecomment-630774572)
+[Github Issue (Paths Fix)](https://github.com/angular/angular/issues/35586#issuecomment-630774572)
+
+[Verdaccio Docker Compose](https://verdaccio.org/docs/docker#using-docker-compose)
+[Verdaccio Config](https://github.com/verdaccio/verdaccio/blob/5.x/conf/docker.yaml)
+
+# Verdaccio Setup
+1. Run `docker compose up -d` in the directory with the `docker-compose` file
+
+    NOTE: If you are **bind mounting**, ensure the correct permissions have been set on the **host linux system** for `./storage`, `./config`, and `./plugins` 
+    
+    _(see troubleshooting)_
+
+    ```bash
+    `sudo chown -R 10001:65533 ./storage`
+    `sudo chown -R 10001:65533 ./config`
+    `sudo chown -R 10001:65533 ./plugins`
+    ```
+
+
+### Verdaccio Troubleshooting
+**Add user permissions issues**
+- [Github Issue](https://github.com/verdaccio/verdaccio/issues/1379)
+- [Github Comment](https://github.com/verdaccio/verdaccio/issues/1324#issuecomment-499429528)
+- [Docs](https://verdaccio.org/docs/docker/)
+    - see: `sudo chown -R 10001:65533 /path/for/verdaccio`
