@@ -11,7 +11,8 @@
     "paths": {
       // `general-components` is the **alias** we can use to import the library
       "general-components": [
-        "dist/general-components"
+        // "dist/general-components"
+        "../node_modules/general-components"
       ]
     },
     "noPropertyAccessFromIndexSignature": true,
