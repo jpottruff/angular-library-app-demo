@@ -110,9 +110,11 @@ npm publish --registry http://localhost:4873/
     _(see troubleshooting)_
 
     ```bash
-    `sudo chown -R 10001:65533 ./storage`
-    `sudo chown -R 10001:65533 ./config`
-    `sudo chown -R 10001:65533 ./plugins`
+    sudo chown -R 10001:65533 ./storage
+    
+    sudo chown -R 10001:65533 ./config
+    
+    sudo chown -R 10001:65533 ./plugins
     ```
 
 
